@@ -1,4 +1,14 @@
 wmic service get name,pathname,displayname,startmode,startname | findstr /i auto | findstr /i /v "C:\Windows\system32" | findstr /i /v """
 ##find potentially vulnerable unquoted service paths
   ##windows services currently installed displaying name, executable path, and display name, along with startmode and startname to filter the output. 
+  ##automatically starts along with services 
+## services that don't have an executable path that starts c:\Windows\system32 
+## exclude services with quotation marks
 
+  Check write permissions
+icacls "C:\path to file"
+  ## rights for username and groups with permissions
+  ## (W) Write (F) Full control 
+
+net user
+  ## confirm groups current account belongs to
